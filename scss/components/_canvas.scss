@@ -16,7 +16,7 @@
     -webkit-transform: rotate(45deg) scale(0.75);
             transform: rotate(45deg) scale(0.75);
 
-    :hover {
+    &:hover {
       -webkit-transform: rotate(45deg) scale(0.65);
               transform: rotate(45deg) scale(0.65);
     }
