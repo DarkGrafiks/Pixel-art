@@ -1,0 +1,34 @@
+.configuration {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2em;
+  background-color: rgba(31, 49, 131, 0.5);
+}
+
+.configuration-input {
+  min-width: 210px;
+  padding: 1em;
+  border: 0;
+}
+
+.configuration-input:first-child {
+  border-right: 2px solid #1f3183;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.configuration-button {
+  padding: 0 1.5em;
+  border: 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: #9b68e4;
+  color: $color-white;
+  cursor: pointer;
+}
+
+.configuration-button:hover {
+  background-color: #8d52e0;
+}

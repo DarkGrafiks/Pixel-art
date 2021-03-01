@@ -1,0 +1,32 @@
+.color-selector {
+  &-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1em 0.75em;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 1rem 0 0 0;
+  }
+
+  &-item {
+    width: 25px;
+    height: 25px;
+    margin: 0 0.5rem;
+    border: 2px solid rgba(0, 0, 0, 0.35);
+    border-radius: 1rem;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+
+  &.item--selected,
+  &-item:hover {
+    border-color: rgba(68, 36, 36, 0.65);
+  -webkit-transform: scale(1.35);
+          transform: scale(1.35);
+  -webkit-box-shadow: 0 0 3px rgba(255, 255, 255, 0.75);
+          box-shadow: 0 0 3px rgba(255, 255, 255, 0.75);
+  }
+}

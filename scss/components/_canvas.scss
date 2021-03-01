@@ -1,0 +1,53 @@
+#canvas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 50px auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.pixel {
+  border: 1px solid;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+
+  &[data-transform="true"] {
+    -webkit-transform: rotate(45deg) scale(0.75);
+            transform: rotate(45deg) scale(0.75);
+
+    :hover {
+      -webkit-transform: rotate(45deg) scale(0.65);
+              transform: rotate(45deg) scale(0.65);
+    }
+  }
+
+  &:hover {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+}
+
+[data-selected-color="1"],
+[data-pixel-color="1"] {
+  background-color: #d2dae2;
+  border-color: #808e9b;
+}
+
+[data-selected-color="2"],
+[data-pixel-color="2"] {
+  background-color: #485460;
+  border-color: #808e9b;
+}
+
+[data-selected-color="3"],
+[data-pixel-color="3"] {
+  background-color: #79ea83;
+  border-color: #808e9b;
+}
+
+[data-selected-color="4"],
+[data-pixel-color="4"] {
+  background-color: #fbc047;
+  border-color: #808e9b;
+}
