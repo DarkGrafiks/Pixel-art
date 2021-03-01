@@ -11,6 +11,7 @@ class PixelArtCanvas {
     this.generateGrid();
     
     // Grid dimensions personnalisation 
+    this.generateConfigForm();
 
     // Color change on pixels click
 
@@ -26,7 +27,7 @@ class PixelArtCanvas {
    */
   generateGrid() {
     const gridSize = this.gridLineSize*this.gridLineSize;
-    
+
     // Add width dimension to contains good pixels number by line
     this.container.style.width = (this.pixelSize*this.gridLineSize)+'px';
 
@@ -41,6 +42,34 @@ class PixelArtCanvas {
       this.container.append(pixel);
     }
 
+  }
+
+  generateConfigForm() {
+    const form = document.createElement('form');
+    const gridLineSizeForm = document.createElement('input');
+    const pixelSizeForm = document.createElement('input');
+    const button = document.createElement('button');
+    
+    form.className = 'configuration';
+    
+    gridLineSizeForm.type = 'number';
+    gridLineSizeForm.className = 'configuration_input';
+    gridLineSizeForm.placeholder = 'Grid size (8 by default)';
+
+    pixelSizeForm.type = 'number';
+    pixelSizeForm.className = 'configuration_input';
+    pixelSizeForm.placeholder = 'Pixels size (30 by default)';
+    
+    button.type = 'submit';
+    button.className = 'configuration_button';
+    button.textContent = 'Generate';
+
+    form.append(gridLineSizeForm);
+    form.append(pixelSizeForm);
+    form.append(button);
+    
+    
+    document.body.prepend(form);
   }
 }
 
