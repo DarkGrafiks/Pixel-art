@@ -1,9 +1,9 @@
 .infos {
-  padding: 1em;
+  padding: $spacer;
   font-size: .9rem;
   text-align: center;
   line-height: 1.5em;
-  color: $color-white;
+  color: lightness-shift($color-gray);
   
   strong {
     font-weight: bold;

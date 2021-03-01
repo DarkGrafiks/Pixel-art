@@ -1,0 +1,7 @@
+@function lightness-shift($bg){
+  @if( lightness($bg) < 25% ) {
+    @return $color-light;
+  }@else{
+    @return $color-dark;
+  }
+}

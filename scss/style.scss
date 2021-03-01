@@ -1,6 +1,7 @@
 @use 'sass:color';
 @import './base/reset';
 @import './utils/vars';
+@import './utils/functions';
 @import './layouts/global';
 @import './components/configForm';
 @import './components/canvas';

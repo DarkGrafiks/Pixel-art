@@ -1,3 +1,5 @@
+@use "sass:string";
+
 #canvas {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -28,26 +30,10 @@
   }
 }
 
-[data-selected-color="1"],
-[data-pixel-color="1"] {
-  background-color: #d2dae2;
-  border-color: #808e9b;
-}
-
-[data-selected-color="2"],
-[data-pixel-color="2"] {
-  background-color: #485460;
-  border-color: #808e9b;
-}
-
-[data-selected-color="3"],
-[data-pixel-color="3"] {
-  background-color: #79ea83;
-  border-color: #808e9b;
-}
-
-[data-selected-color="4"],
-[data-pixel-color="4"] {
-  background-color: #fbc047;
-  border-color: #808e9b;
+@each $id, $color in $pixelsColor {
+  [data-selected-color="#{$id}"],
+  [data-pixel-color="#{$id}"] {
+    background-color: $color;
+    border-color: $color-gray;
+  }
 }
