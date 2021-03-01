@@ -5,7 +5,7 @@ class PixelArtCanvas {
     this.pixelDefaultSize = 30;
     this.gridLineSize = this.gridLineDefaultSize;
     this.pixelSize = this.pixelDefaultSize;
-    this.pixelColorBase = 1;
+    this.nbPixelColors = 4;
   }
 
   init() {
@@ -13,9 +13,8 @@ class PixelArtCanvas {
     this.generateGrid();
     
     // Grid size configuration 
-    this.generateConfigForm();
-
     // Color change on pixels click
+    this.generateConfigForm();
 
     // Select colors interface generation
 
@@ -41,12 +40,19 @@ class PixelArtCanvas {
       const pixel = document.createElement('div');
       
       pixel.className = 'pixel';      
-      pixel.dataset.pixelColor = this.pixelColorBase; // Add data attribute to change pixel color
+      pixel.dataset.pixelColor = 1; // Add data attribute to change pixel color
       pixel.style = `width: ${this.pixelSize}px; height: ${this.pixelSize}px`;
+
+      // Attach event onclick to change color
+      pixel.addEventListener('click', (e) => {
+        const currentColor = Number(e.target.dataset.pixelColor);
+
+        // If current color is latest of pixelColors, reset to 1, else increment.
+        e.target.dataset.pixelColor = (currentColor >= this.nbPixelColors) ? 1 : Number(e.target.dataset.pixelColor) + 1;
+      });
 
       this.container.append(pixel);
     }
-
   }
 
   /**
@@ -99,7 +105,7 @@ class PixelArtCanvas {
 
     document.body.prepend(form);
   }
-  
+
 }
 
 const myPixelArt = new PixelArtCanvas();
