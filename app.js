@@ -6,6 +6,8 @@ class PixelArtCanvas {
     this.gridLineSize = this.gridLineDefaultSize;
     this.pixelSize = this.pixelDefaultSize;
     this.nbPixelColors = 4;
+
+    this.selectedColor;
   }
 
   init() {
@@ -13,19 +15,15 @@ class PixelArtCanvas {
     this.generateGrid();
     
     // Grid size configuration 
-    // Color change on pixels click
+    // And color change on pixels click
     this.generateConfigForm();
 
     // Select colors interface generation
     this.generateColorsSelector();
-
-    // Interaction between select colors interface with click on pixel
-    
-    
   }
 
   /**
-   * Grid generation
+   * Grid generation UI
    */
   generateGrid() {
     const gridSize = this.gridLineSize*this.gridLineSize;
@@ -46,10 +44,16 @@ class PixelArtCanvas {
 
       // Attach event onclick to change color
       pixel.addEventListener('click', (e) => {
-        const currentColor = Number(e.target.dataset.pixelColor);
 
-        // If current color is latest of pixelColors, reset to 1, else increment.
-        e.target.dataset.pixelColor = (currentColor >= this.nbPixelColors) ? 1 : Number(e.target.dataset.pixelColor) + 1;
+        if(this.selectedColor) {
+          e.target.dataset.pixelColor = this.selectedColor;
+        }else{
+          const currentColor = Number(e.target.dataset.pixelColor);
+  
+          // If current color is latest of pixelColors, reset to 1, else increment.
+          e.target.dataset.pixelColor = (currentColor >= this.nbPixelColors) ? 1 : Number(e.target.dataset.pixelColor) + 1;
+        }
+
       });
 
       this.container.append(pixel);
@@ -57,7 +61,7 @@ class PixelArtCanvas {
   }
 
   /**
-   * Configuration user form
+   * Configuration user form UI
    */
   generateConfigForm() {
     const form = document.createElement('form');
@@ -107,14 +111,37 @@ class PixelArtCanvas {
     document.body.prepend(form);
   }
 
+  /**
+   * Generator colors selector UI
+   */
   generateColorsSelector() {
     const configContainer = document.createElement('ul');
     configContainer.className = 'color_selector_container';
 
     for(let i=0; i<this.nbPixelColors; i++) {
       const colorSelector = document.createElement('li');
-      colorSelector.className = 'color_selector_item';
+      const itemClass = 'color_selector_item';
+      colorSelector.className = itemClass;
       colorSelector.dataset.selectedColor = i+1;
+
+      // Attach event 
+      colorSelector.addEventListener('click', (e) => {
+        const selectedclass = 'item--selected';
+        
+        // Remove selected class on all other item
+        document.querySelectorAll(`.${itemClass}`).forEach(item => {
+          item.classList.remove(selectedclass);
+        });
+        
+        // Add target value dataset to selectedColor property, and selected class on item only if dataset value !== actual selected color
+        if(e.target.dataset.selectedColor !== this.selectedColor) {
+          this.selectedColor = e.target.dataset.selectedColor;
+          e.target.classList.add(selectedclass);
+        }else {
+          this.selectedColor = null;
+          e.target.classList.remove(selectedclass);
+        }
+      });
 
       configContainer.appendChild(colorSelector);
     }

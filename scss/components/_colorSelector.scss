@@ -21,7 +21,7 @@
     transition: all 0.2s;
   }
 
-  &.item--selected,
+  &_item.item--selected,
   &_item:hover {
     border-color: rgba(68, 36, 36, 0.65);
   -webkit-transform: scale(1.35);
