@@ -17,6 +17,7 @@ class PixelArtCanvas {
     this.generateConfigForm();
 
     // Select colors interface generation
+    this.generateColorsSelector();
 
     // Interaction between select colors interface with click on pixel
     
@@ -104,6 +105,21 @@ class PixelArtCanvas {
     });
 
     document.body.prepend(form);
+  }
+
+  generateColorsSelector() {
+    const configContainer = document.createElement('ul');
+    configContainer.className = 'color_selector_container';
+
+    for(let i=0; i<this.nbPixelColors; i++) {
+      const colorSelector = document.createElement('li');
+      colorSelector.className = 'color_selector_item';
+      colorSelector.dataset.selectedColor = i+1;
+
+      configContainer.appendChild(colorSelector);
+    }
+
+    this.container.append(configContainer);
   }
 
 }

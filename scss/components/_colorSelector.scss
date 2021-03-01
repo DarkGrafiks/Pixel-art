@@ -1,5 +1,5 @@
-.color-selector {
-  &-container {
+.color_selector {
+  &_container {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -11,7 +11,7 @@
     border-radius: 1rem 0 0 0;
   }
 
-  &-item {
+  &_item {
     width: 25px;
     height: 25px;
     margin: 0 0.5rem;
@@ -22,7 +22,7 @@
   }
 
   &.item--selected,
-  &-item:hover {
+  &_item:hover {
     border-color: rgba(68, 36, 36, 0.65);
   -webkit-transform: scale(1.35);
           transform: scale(1.35);
