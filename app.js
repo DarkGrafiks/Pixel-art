@@ -53,28 +53,28 @@ class PixelArtCanvas {
    */
   generateConfigForm() {
     const form = document.createElement('form');
-    const gridLineSizeForm = document.createElement('input');
-    const pixelSizeForm = document.createElement('input');
     const button = document.createElement('button');
+
+    const generateInputNumber = (name, min, max, placeholder) => {
+      const formInput = document.createElement('input');
+      formInput.type = 'number';
+      formInput.name = name;
+      formInput.min = min;
+      formInput.max = max;
+      formInput.className = 'configuration_input';
+      formInput.placeholder = placeholder;  
+
+      return formInput;
+    };
     
     // Form HTML params
     form.className = 'configuration';
-    
+        
     // Input Grid line size HTML params
-    gridLineSizeForm.type = 'number';
-    gridLineSizeForm.name = 'grid-line-size';
-    gridLineSizeForm.min = 1;
-    gridLineSizeForm.max = 30;
-    gridLineSizeForm.className = 'configuration_input';
-    gridLineSizeForm.placeholder = 'Grid size (8 by default)';
-
+    const gridLineSizeForm = generateInputNumber('grid-line-size', 1, 30, 'Grid size (8 by default)');
+    
     // Input pixel size HTML params
-    pixelSizeForm.type = 'number';
-    pixelSizeForm.name = 'pixel-size';
-    pixelSizeForm.min = 10;
-    pixelSizeForm.max = 90;
-    pixelSizeForm.className = 'configuration_input';
-    pixelSizeForm.placeholder = 'Pixels size (30 by default)';
+    const pixelSizeForm = generateInputNumber('pixel-size', 10, 90, 'Pixels size (30 by default)');
     
     // Submit button HTML params
     button.type = 'submit';
@@ -89,7 +89,7 @@ class PixelArtCanvas {
     form.addEventListener('submit', (e) => this.handleSubmitForm(e,{gridLineSizeForm,pixelSizeForm}));
 
     document.body.prepend(form);
-  }
+  }  
 
   /**
    * Generator colors selector UI
