@@ -2,9 +2,9 @@
 
 Mini interface dans lequel vous allez pouvoir faire du pixel art !
 
-[Voir la démo](https://elegant-bassi-de4240.netlify.app/)
+[Voir la démo](https://zen-engelbart-243da8.netlify.app/)
 
 ## Stack
 
-- Vanilla JS
+- Javascript
 - Sass
